@@ -10,7 +10,12 @@
 (require 'use-package)
 (setq use-package-always-ensure 't)
 
+(toggle-frame-fullscreen)
 
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 
 (custom-set-variables
@@ -18,8 +23,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
+   '(evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,6 +55,8 @@
 (use-package ivy)
 (use-package vertico)
 (use-package expand-region)
+
+
 (use-package company)
 (use-package evil-collection
   :after evil
@@ -90,15 +98,7 @@
 (use-package lsp-ivy)
 (use-package avy)
 
-(use-package iedit
-:after evil
-:config
-  
-(define-key evil-motion-state-map (kbd "SPC s i") 'iedit-mode)
-(define-key evil-motion-state-map (kbd "SPC s s") 'lsp-ivy-workspace-symbol)
-;(evil-define-key 'motion 'global (kbd "SPC s i") 'iedit-mode)
-;(evil-define-key 'motion lsp-mode-map (kbd "SPC s s") 'lsp-ivy-workspace-symbol)
-)
+(use-package iedit)
 
 
 
@@ -108,12 +108,7 @@
 
 
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
 
-
-;; (diff-hl-flydiff-mode 1)
 
 
 
@@ -171,6 +166,7 @@
 (define-key evil-motion-state-map (kbd "SPC k k") 'er/expand-region)
 (define-key evil-motion-state-map (kbd "SPC k \"") 'er/mark-inside-quotes)
 (define-key evil-motion-state-map (kbd "SPC k p") 'er/mark-inside-pairs)
+
 
 ; buffers
 (define-key evil-motion-state-map (kbd "SPC b x") 'kill-this-buffer)
@@ -285,4 +281,3 @@
 
 
 (evil-collection-init 'term)
-
