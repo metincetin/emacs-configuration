@@ -4,12 +4,17 @@
 
 (define-key special-event-map [config-changed-event] #'ignore)
 
+(use-package standard-themes
+  :config
+  )
+
 (use-package reverse-theme
   :config
 	(set-face-attribute 'hl-line nil :inherit nil :background "gray10")
 	(custom-set-faces
 		'(ivy-minibuffer-match-face-2 ((t (:background "gray20"))))))
-(load-theme 'reverse t)
+;(load-theme 'standard-themes t)
+(standard-themes-load-dark)
 
 (if (x-list-fonts "Consolas")
     (set-frame-font "Consolas 14" nil t)

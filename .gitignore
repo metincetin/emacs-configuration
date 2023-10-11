@@ -3,3 +3,4 @@
 !.gitignore
 !theming.el
 !init.el
+!evil-config.el

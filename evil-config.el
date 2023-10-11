@@ -8,7 +8,8 @@
 (define-key evil-motion-state-map (kbd "SPC SPC") 'execute-extended-command)
 
 ; Navigation
-(define-key evil-motion-state-map (kbd "SPC j j") 'avy-goto-char)
+(define-key evil-motion-state-map (kbd "SPC a a") 'avy-goto-char)
+(define-key evil-motion-state-map (kbd "SPC a l") 'avy-goto-line)
 
 (add-hook 'c-mode-common-hook
   (lambda() 
@@ -84,7 +85,6 @@
 (define-key evil-motion-state-map (kbd "SPC p r") 'projectile-recentf)
 (define-key evil-motion-state-map (kbd "SPC p f") 'projectile-find-file)
 (define-key evil-motion-state-map (kbd "SPC p d") 'projectile-dired)
-(define-key evil-motion-state-map (kbd "SPC j j") 'avy-goto-char)
 
 
 (define-key evil-motion-state-map (kbd "SPC f r") 'recentf-open-files)
@@ -108,3 +108,32 @@
 
 (add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
 (add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+
+
+
+; naming prefixes thingy
+;https://www.reddit.com/r/emacs/comments/n1qyxt/how_to_set_prefix_names_to_appear_with_whichkey/
+;(global-set-key (kbd "C-c b") 'my-buffer-map)
+;(global-set-key (kbd "C-c t") 'my-feature-map)
+;(global-set-key (kbd "C-c g") 'my-git-map)
+;
+;(defalias 'my-buffer-map
+;  (let ((map (make-sparse-keymap)))
+;    (define-key map (kbd "a") #'next-buffer)
+;    (define-key map (kbd "b") #'previous-buffer)
+;    map)
+;  "Buffer-related bindings.")
+;
+;(defalias 'my-feature-map
+;  (let ((map (make-sparse-keymap)))
+;    (define-key map (kbd "a") #'describe-mode)
+;    (define-key map (kbd "b") #'normal-mode)
+;    map)
+;  "Feature- and Mode-related bindings.")
+;
+;(defalias 'my-git-map
+;  (let ((map (make-sparse-keymap)))
+;    (define-key map (kbd "a") #'magit-status)
+;    (define-key map (kbd "b") #'magit-log)
+;    map)
+;  "Git-related bindings.")
