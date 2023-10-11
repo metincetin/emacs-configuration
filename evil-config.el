@@ -7,8 +7,12 @@
 
 (define-key evil-motion-state-map (kbd "SPC SPC") 'execute-extended-command)
 
+;eww
+(add-hook 'eww-mode-hook (lambda () (define-key eww-mode-map (kbd "i") 'evil-insert)))
+
 ; Navigation
 (define-key evil-motion-state-map (kbd "SPC a a") 'avy-goto-char)
+(define-key evil-motion-state-map (kbd "SPC j j") 'avy-goto-char)
 (define-key evil-motion-state-map (kbd "SPC a l") 'avy-goto-line)
 
 (add-hook 'c-mode-common-hook
@@ -36,8 +40,15 @@
 
 ; Edit
 (evil-define-key 'motion 'global (kbd "SPC s i") 'iedit-mode)
+(define-key evil-motion-state-map (kbd "SPC e (") 'insert-pair)
+(define-key evil-motion-state-map (kbd "SPC e [") 'insert-pair)
+(define-key evil-motion-state-map (kbd "SPC e \"") 'insert-pair)
+(define-key evil-motion-state-map (kbd "SPC e {") 'insert-pair)
+
+
 
 ; Selection
+
 (define-key evil-motion-state-map (kbd "SPC k k") 'er/expand-region)
 (define-key evil-motion-state-map (kbd "SPC k \"") 'er/mark-inside-quotes)
 (define-key evil-motion-state-map (kbd "SPC k p") 'er/mark-inside-pairs)
@@ -67,6 +78,7 @@
 ; Tools
 
 (define-key evil-motion-state-map (kbd "SPC t t") 'vterm-toggle)
+(define-key evil-motion-state-map (kbd "SPC s c m") 'magit)
 
 
 (with-eval-after-load 'company-mode
@@ -92,6 +104,20 @@
 (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
 (setq evil-emacs-state-modes nil)
 
+(use-package evil-mc
+  :after evil
+  :config
+    (global-evil-mc-mode)
+    (define-key evil-motion-state-map (kbd "SPC c n") 'evil-mc-make-and-goto-next-match)
+    (define-key evil-motion-state-map (kbd "SPC c p") 'evil-mc-make-and-goto-prev-match)
+    (define-key evil-motion-state-map (kbd "SPC c l") 'evil-mc-make-cursor-in-visual-selection-beg)
+    (global-set-key (kbd "<M-escape>") 'evil-mc-undo-all-cursors)
+    (global-set-key (kbd "C-g") 'evil-mc-undo-all-cursors)
+    (setq evil-mc-mode-line-text-inverse-colors nil)
+    (setq evil-mc-mode-line-text-cursor-color nil)
+
+  )
+
 
 (with-eval-after-load 'lsp-mode
     (define-key evil-motion-state-map (kbd "SPC l") lsp-command-map)
@@ -107,7 +133,7 @@
 
 
 (add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
-(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+(add-hook 'evil-normal-state-entry-hook #'my/display-set-relative)
 
 
 
