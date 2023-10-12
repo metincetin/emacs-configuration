@@ -41,10 +41,34 @@
 ; Edit
 (evil-define-key 'motion 'global (kbd "SPC s i") 'iedit-mode)
 (define-key evil-motion-state-map (kbd "SPC e (") 'insert-pair)
+(define-key evil-motion-state-map (kbd "SPC e {") 'insert-pair)
 (define-key evil-motion-state-map (kbd "SPC e [") 'insert-pair)
 (define-key evil-motion-state-map (kbd "SPC e \"") 'insert-pair)
-(define-key evil-motion-state-map (kbd "SPC e {") 'insert-pair)
 
+
+(defun evil-open-above-visual ()
+  (interactive)
+  (evil-open-above 1)
+  (evil-normal-state))
+
+(defun evil-open-below-visual ()
+  (interactive)
+  (evil-open-below 1)
+  (evil-normal-state))
+
+
+
+
+
+(define-key evil-normal-state-map (kbd "ı") 'evil-open-above-visual)
+(define-key evil-normal-state-map (kbd "M-ı") 'evil-open-below-visual)
+
+
+
+
+
+(define-key evil-motion-state-map (kbd "C-j") 'drag-stuff-up)
+(define-key evil-motion-state-map (kbd "C-k") 'drag-stuff-down)
 
 
 ; Selection
@@ -52,6 +76,7 @@
 (define-key evil-motion-state-map (kbd "SPC k k") 'er/expand-region)
 (define-key evil-motion-state-map (kbd "SPC k \"") 'er/mark-inside-quotes)
 (define-key evil-motion-state-map (kbd "SPC k p") 'er/mark-inside-pairs)
+(define-key evil-motion-state-map (kbd "SPC k s") 'er/mark-symbol)
 
 
 ; buffers

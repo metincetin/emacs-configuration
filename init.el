@@ -27,7 +27,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
+   '(drag-stuff swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,9 +51,12 @@
 (use-package projectile)
 (use-package ivy)
 (use-package expand-region)
+
 (use-package csharp-mode)
 (use-package typescript-mode)
 (use-package lsp-ivy)
+(use-package drag-stuff)
+
 (use-package magit)
 
 
