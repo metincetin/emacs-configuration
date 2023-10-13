@@ -2,6 +2,8 @@
 (setq-default evil-escape-key-sequence "aü")
 (setq-default evil-escape-delay 0.2)
 
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 (global-set-key "\M-f" 'find-file)
 
 

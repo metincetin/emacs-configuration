@@ -27,12 +27,13 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(drag-stuff swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
+   '(god-mode drag-stuff swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(god-mode-lighter ((t (:inherit error))))
  '(ivy-minibuffer-match-face-2 ((t (:background "gray20")))))
 
 
@@ -162,7 +163,6 @@
 
 (define-key iedit-mode-keymap (kbd "<escape>") 'iedit-escape)
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 
 
