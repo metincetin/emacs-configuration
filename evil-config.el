@@ -47,6 +47,16 @@
 (define-key evil-motion-state-map (kbd "SPC e [") 'insert-pair)
 (define-key evil-motion-state-map (kbd "SPC e \"") 'insert-pair)
 
+(defun semicolon-at-end-of-line ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (insert ";")))
+
+
+(define-key evil-motion-state-map (kbd "C-,") 'semicolon-at-end-of-line)
+(define-key evil-insert-state-map (kbd "C-,") 'semicolon-at-end-of-line)
+
 
 (defun evil-open-above-visual ()
   (interactive)
@@ -87,6 +97,10 @@
 (define-key evil-motion-state-map (kbd "SPC b n") 'next-buffer)
 
 (define-key evil-motion-state-map (kbd "SPC b b") 'ivy-switch-buffer)
+(define-key evil-motion-state-map (kbd "SPC b c") 'evil-buffer-new)
+
+;treemacs
+(define-key evil-motion-state-map (kbd "SPC p t") 'treemacs)
 
 
 ; Compilation
@@ -94,8 +108,9 @@
 
 (defun projectile-compile-and-run()
   (interactive)
-  (projectile-compile-project  )
-  (projectile-run-project))
+  (projectile-compile-project t)
+  (projectile-run-project t)
+)
 
 (define-key evil-motion-state-map (kbd "SPC c r") 'projectile-run-project)
 (define-key evil-motion-state-map (kbd "SPC c c") 'projectile-compile-project)
@@ -118,9 +133,14 @@
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
+(eval-after-load "swiper" '(progn
+    (define-key swiper-map (kbd "C-j") 'ivy-next-line)
+    (define-key swiper-map (kbd "C-k") 'ivy-previous-line)))
+  
+
+
 
 ;; PROJECTILE
-(define-key evil-motion-state-map (kbd "SPC p p") 'projectile-recentf)
 (define-key evil-motion-state-map (kbd "SPC p r") 'projectile-recentf)
 (define-key evil-motion-state-map (kbd "SPC p f") 'projectile-find-file)
 (define-key evil-motion-state-map (kbd "SPC p d") 'projectile-dired)
@@ -130,6 +150,9 @@
 
 (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
 (setq evil-emacs-state-modes nil)
+
+(use-package treemacs-evil
+  :after treemacs)
 
 (use-package evil-mc
   :after evil
@@ -190,3 +213,9 @@
 ;    (define-key map (kbd "b") #'magit-log)
 ;    map)
 ;  "Git-related bindings.")
+
+
+
+; quitting
+(define-key evil-motion-state-map (kbd "SPC q q") 'evil-quit)
+(define-key evil-motion-state-map (kbd "SPC q a") 'evil-quit-all)

@@ -25,9 +25,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("871b064b53235facde040f6bdfa28d03d9f4b966d8ce28fb1725313731a2bcc8" default))
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(god-mode drag-stuff swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
+   '(gdscript-mode writeroom-mode god-mode drag-stuff swiper standard-themes magit-section magit typescript-mode evil-mc multiple-cursors multiple-cursor ivy evil-escape vterm-toggle vterm reverse-theme git-gutter git-gutter+ diff-hl evil-collection haxe-mode battle-haxe expand-region iedit which-key flycheck csharp-mode lsp-ivy lsp-ui avy counsel ace-jump-mode beacon projectile general lsp-mode company vertico evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,6 +62,8 @@
 
 (use-package magit)
 
+(use-package writeroom-mode)
+
 
 (use-package company
   :config
@@ -90,7 +94,9 @@
   :hook (c-mode . lsp)
   :hook (c++-mode . lsp)
   :hook (csharp-mode . lsp)
-  :commands lsp)
+  :commands lsp
+  :config
+  (setq warning-minimum-level :error))
 
 (use-package lsp-ui)
 (use-package flycheck)
